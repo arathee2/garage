@@ -14,7 +14,7 @@ from garage.torch import compute_advantages, filter_valids
 from garage.torch.optimizers import OptimizerWrapper
 
 
-class VPG(RLAlgorithm):
+class VPGAttention(RLAlgorithm):
     """Vanilla Policy Gradient (REINFORCE).
 
     VPG, also known as Reinforce, trains stochastic policy in an on-policy way.
@@ -73,7 +73,7 @@ class VPG(RLAlgorithm):
     ):
         self._discount = discount
         self.policy = policy
-        self.max_episode_length = env_spec.max_episode_length
+        self.max_episode_length = 32767 #env_spec.max_episode_length
 
         self._value_function = value_function
         self._gae_lambda = gae_lambda
